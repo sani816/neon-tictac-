@@ -75,6 +75,7 @@ function listenToGame() {
     if (winner) {
       playSound("winSound");
       status.textContent = `${playerNames[winner]} wins!`;
+      showConfetti(); // 🎉 sprinkle
     } else if (!board.includes("")) {
       status.textContent = "Draw!";
     } else {
@@ -109,6 +110,7 @@ cells.forEach(cell => {
       if (winner) {
         playSound("winSound");
         status.textContent = `${playerNames[winner]} wins!`;
+        showConfetti(); // 🎉 sprinkle
       } else if (!board.includes("")) {
         status.textContent = "Draw!";
       } else {
@@ -180,4 +182,11 @@ function showWinLine(a, c) {
 function changeTheme() {
   const theme = document.getElementById("theme").value;
   document.body.className = theme;
+}
+function showConfetti() {
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
 }
